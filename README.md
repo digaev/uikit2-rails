@@ -1,5 +1,7 @@
 # uikit2-rails
 
+[![Gem Version](https://badge.fury.io/rb/uikit2-rails.svg)](http://badge.fury.io/rb/uikit2-rails)
+
 UIkit 2.22.0
 
 ## Installation
@@ -7,7 +9,7 @@ UIkit 2.22.0
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'uikit2-rails', git: 'https://github.com/digaev/uikit2-rails.git'
+gem 'uikit2-rails'
 ```
 
 And then execute:
