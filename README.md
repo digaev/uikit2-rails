@@ -1,6 +1,6 @@
 # uikit2-rails
 
-[![Gem Version](https://badge.fury.io/rb/uikit2-rails.svg)](http://badge.fury.io/rb/uikit2-rails) [![Build Status](https://travis-ci.org/digaev/uikit2-rails.svg)](https://travis-ci.org/digaev/uikit2-rails)
+[![Gem Version](https://badge.fury.io/rb/uikit2-rails.svg)](http://badge.fury.io/rb/uikit2-rails)
 
 UIkit 2.22.0
 
