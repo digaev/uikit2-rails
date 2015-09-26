@@ -46,7 +46,7 @@ In your application.css:
  */
 ```
 
-And in yor application js:
+And in your application js:
 
 ```js
 //= require uikit
