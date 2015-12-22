@@ -1,4 +1,4 @@
-/*! UIkit 2.24.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(UI) {
 
     "use strict";
@@ -8,7 +8,8 @@
     UI.component('stackMargin', {
 
         defaults: {
-            'cls': 'uk-margin-small-top'
+            cls: 'uk-margin-small-top',
+            rowfirst: false
         },
 
         boot: function() {
@@ -60,9 +61,24 @@
 
         process: function() {
 
+            var $this = this;
+
             this.columns = this.element.children();
 
             UI.Utils.stackMargin(this.columns, this.options);
+
+            if (!this.options.rowfirst) {
+                return this;
+            }
+
+            // Mark first column elements
+            var pos_cache = this.columns.removeClass(this.options.rowfirst).filter(':visible').first().position();
+
+            if (pos_cache) {
+                this.columns.each(function() {
+                    UI.$(this)[UI.$(this).position().left == pos_cache.left ? 'addClass':'removeClass']($this.options.rowfirst);
+                });
+            }
 
             return this;
         },
