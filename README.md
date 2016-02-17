@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/uikit2-rails.svg)](http://badge.fury.io/rb/uikit2-rails)
 
-UIkit 2.24.3
+UIkit 2.25.0
 
 ## Installation
 
