@@ -1,9 +1,15 @@
-/*! UIkit 2.25.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.26.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(UI) {
 
     "use strict";
 
     var active = false, activeCount = 0, $html = UI.$html, body;
+
+    UI.$win.on("resize orientationchange", UI.Utils.debounce(function(){
+        UI.$('.uk-modal.uk-open').each(function(){
+            UI.$(this).data('modal').resize();
+        });
+    }, 150));
 
     UI.component('modal', {
 
@@ -45,7 +51,7 @@
                 if (target[0] == $this.element[0] && $this.options.bgclose) {
                     $this.hide();
                 }
-            });
+            }).on("changed.uk.dom", this.resize.bind(this));
         },
 
         toggle: function() {
@@ -217,10 +223,6 @@
                     active.hide();
                 }
             });
-
-            UI.$win.on("resize orientationchange", UI.Utils.debounce(function(){
-                if (active) active.resize();
-            }, 150));
         },
 
         init: function() {
