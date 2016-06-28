@@ -1,4 +1,4 @@
-/*! UIkit 2.26.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.26.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(core) {
 
     if (typeof define == "function" && define.amd) { // AMD
@@ -44,7 +44,7 @@
 
     var UI = {}, _UI = global.UIkit ? Object.create(global.UIkit) : undefined;
 
-    UI.version = '2.26.2';
+    UI.version = '2.26.3';
 
     UI.noConflict = function() {
         // restore UIkit version
@@ -179,6 +179,19 @@
             timeout = setTimeout(later, wait);
             if (callNow) func.apply(context, args);
         };
+    };
+
+    UI.Utils.throttle = function (func, limit) {
+        var wait = false;
+        return function () {
+            if (!wait) {
+                func.call();
+                wait = true;
+                setTimeout(function () {
+                    wait = false;
+                }, limit);
+            }
+        }
     };
 
     UI.Utils.removeCssRules = function(selectorRegEx) {
@@ -2575,9 +2588,7 @@
                 }
             });
 
-            UI.domObserve(this.element, function(e) {
-                $this.resize();
-            });
+            UI.domObserve(this.element, function(e) { $this.resize(); });
         },
 
         toggle: function() {
@@ -2597,7 +2608,7 @@
             }
 
             this.element.removeClass("uk-open").show();
-            this.resize();
+            this.resize(true);
 
             if (this.options.modal) {
                 active = this;
@@ -2646,7 +2657,9 @@
             return this;
         },
 
-        resize: function() {
+        resize: function(force) {
+
+            if (!this.isActive() && !force) return;
 
             var bodywidth  = body.width();
 
@@ -2710,13 +2723,13 @@
                 body.css(this.paddingdir, "");
             }
 
-            if(active===this) active = false;
+            if (active===this) active = false;
 
             this.trigger('hide.uk.modal');
         },
 
         isActive: function() {
-            return this.active;
+            return this.element.hasClass('uk-open');
         }
 
     });
