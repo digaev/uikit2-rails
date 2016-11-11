@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/uikit2-rails.svg)](http://badge.fury.io/rb/uikit2-rails)
 
-UIkit 2.26.1
+UIkit 2.27.2
 
 ## Installation
 
@@ -33,7 +33,7 @@ In your application.css:
  *= require uikit
  * or
  *= require uikit.gradient
- * or 
+ * or
  *= require uikit.almost-flat
  *
  * Example including components:
